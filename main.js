@@ -16,3 +16,13 @@ function promiseAll(promises) {
   });
 }
 
+//Task 2: Implement promiseAllSettled Function
+function promiseAllSettled(promises) {
+  return Promise.all(promises.map(promise => {
+      return promise.then(
+          value => ({ status: 'fulfilled', value }),
+          reason => ({ status: 'rejected', reason })
+      );
+  }));
+}
+
