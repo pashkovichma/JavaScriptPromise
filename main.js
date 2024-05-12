@@ -38,3 +38,18 @@ function chainPromises(functionsArray) {
       promiseResult.then(resolve).catch(reject);
   });
 }
+
+//Task 4: Implement promisify Function
+function promisify(callbackStyleFunction) {
+  return function (...args) {
+      return new Promise((resolve, reject) => {
+          callbackStyleFunction(...args, (error, result) => {
+              if (error) {
+                  reject(error);
+              } else {
+                  resolve(result);
+              }
+          });
+      });
+  };
+}
