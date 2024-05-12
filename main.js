@@ -26,3 +26,15 @@ function promiseAllSettled(promises) {
   }));
 }
 
+//Task 3: Implement Chaining of Promises as a Separate Function
+function chainPromises(functionsArray) {
+  return new Promise((resolve, reject) => {
+      let promiseResult = Promise.resolve();
+
+      functionsArray.forEach(func => {
+        promiseResult = promiseResult.then(func);
+      });
+
+      promiseResult.then(resolve).catch(reject);
+  });
+}
